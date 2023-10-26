@@ -1,0 +1,21 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : GAME STATE MUSIC AUDIO AND VARIABLE DEFINED VALUES       */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : gameState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define GIRLBGIMAGE "/Graphics/Images/fon.png"
+
+#define HEROIS "/Graphics/Characters/ghost.png"
+
+#define RIP "/Graphics/Enemies/ripp.png"
+
+#define RIP2 "/Graphics/Enemies/rip2.png"
+
+#define PUM "/Graphics/Enemies/pu.png"

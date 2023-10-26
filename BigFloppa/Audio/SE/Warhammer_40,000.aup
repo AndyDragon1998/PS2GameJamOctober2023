@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Warhammer_40,000_data" version="1.3.0" audacityversion="2.4.2" sel0="0.0000000000" sel1="28.3941039823" vpos="0" h="0.0000000000" zoom="7.3959016326" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf59.10.100"/>
+		<tag name="COMMENTS" value="https://www.youtube.com/watch?v=ZLsX9WUdYnU"/>
+		<tag name="YEAR" value="20181116"/>
+		<tag name="TITLE" value="Warhammer 40,000 menu"/>
+		<tag name="ARTIST" value="ZeroPoint216"/>
+	</tags>
+	<wavetrack name="Warhammer_40,000" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1362917">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f1af.au" len="262144" min="-0.684906" max="0.716187" rms="0.086351"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1f935.au" len="262144" min="-0.961426" max="0.999969" rms="0.271428"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="eff1f6ac.au" len="262144" min="-0.981506" max="0.963196" rms="0.279631"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="eff1fc58.au" len="262144" min="-0.985443" max="0.999969" rms="0.323919"/>
+				</waveblock>
+				<waveblock start="1048576">
+					<simpleblockfile filename="eff1f883.au" len="157170" min="-0.959991" max="0.999969" rms="0.329645"/>
+				</waveblock>
+				<waveblock start="1205746">
+					<simpleblockfile filename="eff1f0f3.au" len="157171" min="-0.969238" max="0.999969" rms="0.324472"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

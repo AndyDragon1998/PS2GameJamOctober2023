@@ -1,0 +1,18 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : MAIN MENU MUSIC AUDIO AND VARIABLE DEFINED VALUES        */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : menuState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define TITLEIMAGEPATH "/Graphics/Background/intr.png"
+
+#define TITLETEXT1 "/Graphics/Images/TitleText1.png"
+
+//#define SCREM "/Graphics/Images/fred.png"
+

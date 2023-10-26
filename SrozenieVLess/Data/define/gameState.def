@@ -1,0 +1,21 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : GAME STATE MUSIC AUDIO AND VARIABLE DEFINED VALUES       */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : gameState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define GIRLBGIMAGE "/Graphics/Images/GameBG.png"
+
+#define TESTPLATE "/Graphics/Characters/pltfin.png"
+
+#define HOOKARROW "/Graphics/Characters/hookarrow.png"
+
+#define GREENPUDGE "/Graphics/Characters/greenpudge.png"
+#define PURPLEPUDGE "/Graphics/Characters/purplepudge.png"
+

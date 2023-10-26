@@ -1,0 +1,16 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : GAME STATE MUSIC AUDIO AND VARIABLE DEFINED VALUES       */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : gameState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define L2BACKGR "/Graphics/Background/street.png"
+#define A "/Graphics/Characters/1.png"
+#define B "/Graphics/Characters/2.png"
+#define C "/Graphics/Characters/3.png"

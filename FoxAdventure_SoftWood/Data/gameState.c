@@ -1,0 +1,248 @@
+/*****************************************************************************/
+/*  Автор         		: Дракончик				                             */
+/*  Приставка     		: Sony PlayStation 2					             */
+/*  ОС			  		: OSDSYS											 */
+/*  Язык	      		: GNU C                                              */
+/*                                                                           */
+/*  Содержимое файла	: Стадия игровой детельности                         */
+/*  Атрибут файла		: SOURCE                                             */
+/*  Имя файла     		: gameState.c	                                     */
+/*                                                                           */
+/*****************************************************************************/
+
+#include "include/gameState.h"
+#include "include/menuState.h"
+#include "include/overState.h"
+#include "include/introState.h"
+#include "include/pad.h"
+#include "include/musicManager.h"
+
+
+extern StateMachine GameMachineState;
+
+/****** User External Files ********/
+#include "extern/gameState.ext"
+
+/****** User Table Files ***********/
+
+
+/****** User Define Files ***********/
+#include "define/gameState.def"
+
+GSTEXTURE GameBG;
+GSTEXTURE PlayerImage;
+GSTEXTURE colliderImage;
+BGM Ost;
+
+struct RenderSprite playerRender = {0,0,32,32,0.0f,0.0f,32.0f,32.0f};
+struct RenderSprite collidRend1 = {0,0,32,16,0.0f,0.0f,32.0f,16.0f};
+struct RenderSprite collidRend2 = {0,0,96,16,0.0f,0.0f,96.0f,16.0f};
+struct RenderSprite collidRend3 = {0,0,96,16,0.0f,0.0f,96.0f,16.0f};
+struct RenderSprite collidRend4 = {0,0,32,16,0.0f,0.0f,32.0f,16.0f};
+struct RenderSprite collidRend5 = {0,0,96,16,0.0f,0.0f,96.0f,16.0f};
+
+int speed = 3;
+int gravityWorld = 2;
+bool jumpDone = false;
+
+void UpdateRender(struct RenderSprite* spriteData, int new_x, int new_y)
+{
+	float spriteWidth = spriteData->u2-spriteData->u1;
+	float spriteHeight = spriteData->v2-spriteData->v1;
+	
+	spriteData -> x = new_x;
+	spriteData -> y = new_y;
+	spriteData -> x2 = spriteData -> x + spriteWidth;
+	spriteData -> y2 = spriteData -> y + spriteHeight;
+}
+
+void GameStart(GSGLOBAL* gsGlobal)
+{
+	UpdateRender(&playerRender, 128, 416);
+	UpdateRender(&collidRend1, 320, 240);
+	UpdateRender(&collidRend2, 64, 448);
+	UpdateRender(&collidRend3, 336, 448);
+	UpdateRender(&collidRend4, 464, 432);
+	UpdateRender(&collidRend5, 496, 416);
+
+	char temp[4096];
+	strcpy(temp, relativePath);
+	strcat(temp, PickMusic(2));
+	Ost.fileName = temp;
+	
+	LoadMusic(&Ost);	
+
+	char tempy[4096];
+	strcpy(tempy, relativePath);
+	strcat(tempy, LEVELIMAGE);
+	gsKit_texture_png(gsGlobal, &GameBG,tempy);
+	
+	strcpy(tempy, relativePath);
+	strcat(tempy, CHARACTERIMAGE);
+	gsKit_texture_png(gsGlobal, &PlayerImage,tempy);
+	
+	strcpy(tempy, relativePath);
+	strcat(tempy, COLIMAGE);
+	gsKit_texture_png(gsGlobal, &colliderImage,tempy);
+
+	SetUpFont(gsGlobal);
+
+}
+
+void GameUpdate(GSGLOBAL* gsGlobal)
+{	
+	// This part here plays the music
+		PlayMusic(&Ost);
+	if(playerRender.x+16 > collidRend2.x && playerRender.x2-16 < collidRend2.x2+144
+		||playerRender.x+16 > collidRend3.x && playerRender.x2-16 < collidRend3.x2+32
+		||playerRender.x+16 > collidRend4.x && playerRender.x2-16 < collidRend4.x2
+		||playerRender.x+16 > collidRend5.x && playerRender.x2-16 < collidRend5.x2+16)
+	{		
+		if(playerRender.y == collidRend2.y)
+		{			
+			UpdateRender(&playerRender, playerRender.x, collidRend2.y);
+			jumpDone = false;
+		}
+		else if (playerRender.y == collidRend4.y){
+			UpdateRender(&playerRender, playerRender.x, collidRend4.y);
+			jumpDone = false;
+		}
+		else if (playerRender.y == collidRend5.y)
+		{
+			UpdateRender(&playerRender, playerRender.x, collidRend5.y);
+			jumpDone = false;
+		}
+		else
+		{
+			UpdateRender(&playerRender, playerRender.x, playerRender.y + gravityWorld);
+		}
+	}
+	else{
+		UpdateRender(&playerRender, playerRender.x, playerRender.y + gravityWorld);
+	}
+	
+
+
+	if(PlaystationGamePad.RIGHT_KEY_DOWN){
+		UpdateRender(&playerRender, playerRender.x + speed, 
+								playerRender.y);
+	}
+	if(PlaystationGamePad.LEFT_KEY_DOWN){
+		UpdateRender(&playerRender, playerRender.x - speed, 
+								playerRender.y);
+	}
+	if(PlaystationGamePad.BUTTON_X_KEY_DOWN && !jumpDone)
+	{
+		UpdateRender(&playerRender, playerRender.x, 
+								playerRender.y - 32);
+							
+		jumpDone = true;
+	}
+
+	
+	if(playerRender.y > 512 || playerRender.x > 640 || playerRender.x < 0){
+		UnloadMusic(&Ost);
+
+		StateMachineChange(&GameMachineState, &MenuState, gsGlobal);
+	}
+	
+
+	
+}
+
+void GameDraw(GSGLOBAL* gsGlobal, u64 colour)
+{
+	gsKit_prim_sprite_texture(gsGlobal, &GameBG,0,  // X1
+						0,  // Y1
+						0.0f,  // U1
+						0.0f,  // V1
+						GameBG.Width * 2, // X2
+						GameBG.Height * 2, // Y2
+						GameBG.Width * 2, // U2
+						GameBG.Height * 2, // V2
+						2,
+						colour);
+						
+	gsKit_prim_sprite_texture(gsGlobal, &PlayerImage,playerRender.x,  // X1
+						playerRender.y,  // Y1
+						playerRender.u1,  // U1
+						playerRender.v1,  // V1
+						playerRender.x2, // X2
+						playerRender.y2, // Y2
+						playerRender.u2, // U2
+						playerRender.v2, // V2
+						2,
+						colour);	
+
+	// gsKit_prim_sprite_texture(gsGlobal, &colliderImage,collidRend1.x,  // X1
+	// 					collidRend1.y,  // Y1
+	// 					collidRend1.u1,  // U1
+	// 					collidRend1.v1,  // V1
+	// 					collidRend1.x2, // X2
+	// 					collidRend1.y2, // Y2
+	// 					collidRend1.u2, // U2
+	// 					collidRend1.v2, // V2
+	// 					2,
+	// 					colour);
+
+	// gsKit_prim_sprite_texture(gsGlobal, &colliderImage,collidRend2.x,  // X1
+	// 					collidRend2.y,  // Y1
+	// 					collidRend2.u1,  // U1
+	// 					collidRend2.v1,  // V1
+	// 					collidRend2.x2+144, // X2
+	// 					collidRend2.y2, // Y2
+	// 					collidRend2.u2, // U2
+	// 					collidRend2.v2, // V2
+	// 					2,
+	// 					colour);
+	
+	// gsKit_prim_sprite_texture(gsGlobal, &colliderImage,collidRend3.x,  // X1
+	// 					collidRend3.y,  // Y1
+	// 					collidRend3.u1,  // U1
+	// 					collidRend3.v1,  // V1
+	// 					collidRend3.x2+32, // X2
+	// 					collidRend3.y2, // Y2
+	// 					collidRend3.u2, // U2
+	// 					collidRend3.v2, // V2
+	// 					2,
+	// 					colour);
+
+	// gsKit_prim_sprite_texture(gsGlobal, &colliderImage,collidRend4.x,  // X1
+	// 					collidRend4.y,  // Y1
+	// 					collidRend4.u1,  // U1
+	// 					collidRend4.v1,  // V1
+	// 					collidRend4.x2, // X2
+	// 					collidRend4.y2, // Y2
+	// 					collidRend4.u2, // U2
+	// 					collidRend4.v2, // V2
+	// 					2,
+	// 					colour);
+
+	// gsKit_prim_sprite_texture(gsGlobal, &colliderImage,collidRend5.x,  // X1
+	// 					collidRend5.y,  // Y1
+	// 					collidRend5.u1,  // U1
+	// 					collidRend5.v1,  // V1
+	// 					collidRend5.x2+16, // X2
+	// 					collidRend5.y2, // Y2
+	// 					collidRend5.u2, // U2
+	// 					collidRend5.v2, // V2
+	// 					2,
+	// 					colour);
+	
+}
+
+void GameEnd(GSGLOBAL* gsGlobal)
+{
+	printf("This should Run when GameState is Gone.\n");
+		// Clear VRAM after the Game is done~
+	gsKit_vram_clear(gsGlobal);
+	UnloadMusic(&Ost);
+}
+
+StateManager GameState =
+{
+	GameStart,
+	GameUpdate,
+	GameDraw,
+	GameEnd
+};

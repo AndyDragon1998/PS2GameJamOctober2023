@@ -1,0 +1,16 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : GAME STATE MUSIC AUDIO AND VARIABLE DEFINED VALUES       */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : gameState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define GIRLBGIMAGE "/Graphics/Images/GameBG.png"
+#define SOLDIER "/Graphics/Characters/Soldier.png"
+#define BULLET "/Graphics/Bullets/Bullet.png"
+#define ZOMBIE "/Graphics/Characters/Zombi.png"

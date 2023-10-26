@@ -1,0 +1,23 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : MAIN MENU MUSIC AUDIO AND VARIABLE DEFINED VALUES        */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : menuState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define TITLEIMAGEPATH "/Graphics/Images/Title.png"
+
+#define BUTTONSTARTPATH "/Graphics/Images/play_button.png"
+
+#define BUTTONCLOSEPATH "/Graphics/Images/exit_button.png"
+
+#define SELBUTTONSTARTPATH "/Graphics/Images/play_button_sel.png"
+
+#define SELBUTTONCLOSEPATH "/Graphics/Images/exit_button_sel.png"
+
+

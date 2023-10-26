@@ -1,0 +1,32 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : ALL INGAME BACKGROUND MUSIC FILES LISTED HERE FOR GAME   */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : backgroundMusic.def                                      */
+/*                                                                           */
+/*****************************************************************************/
+
+
+#define BGM001 "/Audio/BGM/PrologueofGrimDarkDoominess" // ???
+#define BGM002 "/Audio/BGM/PrincessKnightMIKU" // ???
+#define BGM003 "/Audio/BGM/ThatCrystalCavernBeneath" // ???
+#define BGM004 "/Audio/BGM/music" // ???
+#define BGM005 "/Audio/BGM/music" // ???
+#define BGM006 "/Audio/BGM/music" // ???
+#define BGM007 "/Audio/BGM/music" // ???
+#define BGM008 "/Audio/BGM/music" // ???
+#define BGM009 "/Audio/BGM/music" // ???
+#define BGM010 "/Audio/BGM/music" // ???
+#define BGM011 "/Audio/BGM/music" // ???
+#define BGM012 "/Audio/BGM/music" // ???
+#define BGM013 "/Audio/BGM/music" // ???
+#define BGM014 "/Audio/BGM/music" // ???
+#define BGM015 "/Audio/BGM/music" // ???
+#define BGM016 "/Audio/BGM/music" // ???
+#define BGM017 "/Audio/BGM/music" // ???
+#define BGM018 "/Audio/BGM/music" // ???
+#define BGM019 "/Audio/BGM/music" // ???

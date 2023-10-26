@@ -1,0 +1,42 @@
+/*****************************************************************************/
+/*  Author        : Дракончик												 */
+/*  Machine       : Sony PlayStation 2										 */
+/*  OS		  	  : OSDSYS													 */
+/*  Language      : GNU C                                                    */
+/*                                                                           */
+/*  File Contents : GAME STATE MUSIC AUDIO AND VARIABLE DEFINED VALUES       */
+/*  File Attribute: DEFINED	                                              	 */
+/*  File Name     : gameState.def                                            */
+/*                                                                           */
+/*****************************************************************************/
+
+#define GIRLBGIMAGE "/Graphics/Images/GameBG.png"
+
+#define IMAGE2 "/Graphics/Images/Title.png"
+
+//background
+#define HALL1 "/Graphics/Background/Splash.png"
+#define HALL2 "/Graphics/Background/hall2.png"
+#define HALL3 "/Graphics/Background/hallcastle.png"
+#define HALLWAY1 "/Graphics/Background/hallway2.png"
+#define HALLWAY2 "/Graphics/Background/hallway3.png"
+
+
+#define TEXTBC "/Graphics/Images/TextBc.png"
+
+
+//characters
+#define NON "/Graphics/Characters/Use/Non.png"
+#define PRINCE "/Graphics/Characters/Use/Prince.png"
+#define PRINCESS "/Graphics/Characters/Use/Princess.png"
+#define BOY "/Graphics/Characters/Use/Boy.png"
+#define CLOWN "/Graphics/Characters/Use/Clown.png"
+#define KING "/Graphics/Characters/Use/King.png"
+#define LADYBLOND "/Graphics/Characters/Use/LadyBlond.png"
+#define LADYGRAY "/Graphics/Characters/Use/LadyGray.png"
+#define LADYGREEN "/Graphics/Characters/Use/LadyGreen.png"
+#define LADYPURPLE "/Graphics/Characters/Use/LadyPurple.png"
+#define MAIDBOY "/Graphics/Characters/Use/MaidBoy.png"
+#define MAIDGIRL "/Graphics/Characters/Use/MaidGirl.png"
+#define MAN "/Graphics/Characters/Use/Man.png"
+
